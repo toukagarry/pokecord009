@@ -48,7 +48,7 @@ client.loadCommands();
 client.on('ready', () => {
   console.log(`READY Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
   client.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`, "Ready", "event");
-  client.user.setActivity(`discord.gg/TYe3U4w`);
+  client.user.setActivity(`ichika`);
 });
 
 client.on('error', error => {
@@ -95,13 +95,45 @@ client.on('message', message => {
                   if (result === undefined) {
                     embed
                       .setTitle("Pokemon Not Found")
-                      .setDescription("Please contact the owner CHamburr#2591 to add this Pokemon to the database.");
+                      .setDescription("Please contact the owner ichika to add this Pokemon to the database.");
                     return message.channel.send(embed);
                   }
                 
                   embed
                     .setTitle("Possible Pokemon: " + result)
-                    .setFooter("Want this bot in your server? Do @" + client.user.tag + " info.");
+                  message.channel.send(embed);
+                
+                  console.log("[" + message.guild.name + "/#" + message.channel.name + "] " + result);
+                })
+            });
+          }
+        }
+      });
+    }
+	  
+    if (message.author.id == '365975655608745985') {
+      message.embeds.forEach((e) => {
+        if (e.description !== undefined && e.description.startsWith("Guess the pokémon and type")) {
+          if (e.thumbnail) {
+            let url = e.thumbnail.url;
+            
+            request(url, async function(err, res, body) {
+              if (err !== null) return;
+            
+              imghash
+                .hash(body)
+                .then(hash => {
+                  let result = db[hash];
+                  
+                  if (result === undefined) {
+                    embed
+                      .setTitle("Pokemon Not Found")
+                      .setDescription("Please contact the owner ichika to add this Pokemon to the database.");
+                    return message.channel.send(embed);
+                  }
+                
+                  embed
+                    .setTitle("Possible Pokemon: " + result)
                   message.channel.send(embed);
                 
                   console.log("[" + message.guild.name + "/#" + message.channel.name + "] " + result);
