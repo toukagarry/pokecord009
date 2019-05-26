@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {   
   let embed = new Discord.RichEmbed()
-      .setTitle("PokeAssistant Help")
+      .setTitle("NogameNolife Help")
       .setDescription("Use `help <command>` for details.")
       .setColor(0xFF4500)
       .addField("Legend", "`<arg>` Compulsory argument\n`[arg]` Optional argument");
