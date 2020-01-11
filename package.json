@@ -10,6 +10,7 @@
     "express": "^4.16.4",
     "discord.js": "^11.4.2",
     "imghash": "^0.0.3",
+    "image-hash": "3.5.1",
     "request": "^2.88.0",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.2.2"
