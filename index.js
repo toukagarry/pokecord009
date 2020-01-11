@@ -1,12 +1,15 @@
 const fs = require('fs');
 const http = require('http');
-const Canvas = require('canvas');
-const config = require("./config.json");
 const moment = require('moment');
-
+const imageHash = require('image-hash');
 
 const db = require('./Pokemons.json')
 const imghash = require('imghash');
+imghash
+  .hash('./image.png')
+  .then((hash) => {
+    console.log(hash); // 'f884c4d8d1193c07'
+  });
 const request = require('request').defaults({ encoding: null });
 
 const Discord = require('discord.js');
@@ -180,6 +183,7 @@ client.on('message', message => {
     
 
     if (message.author.bot) return;
+   
 
     let prefix = false;
 	  let args = message.content;
@@ -265,3 +269,4 @@ client.log = async (content, title, type) => {
 };
 
 client.login(process.env.BOT_TOKEN);
+
